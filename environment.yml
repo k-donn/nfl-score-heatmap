@@ -1,0 +1,22 @@
+name: ec-3.8
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - autopep8=1.5.3
+  - bpython=0.19
+  - matplotlib=3.1.3
+  - pydocstyle=4.0.1
+  - pylint=2.5.2
+  - pyqt=5.9.2
+  - pip=20.0.2
+  - python=3.8.3
+  - python-dateutil=2.8.1
+  - pytz=2020.1
+  - tzlocal=2.0.0
+  - qt=5.9.7
+  - requests=2.23.0
+  - urllib3=1.25.8
+  - pip:
+    - matplot-fmt-pi==1.5.0
+
