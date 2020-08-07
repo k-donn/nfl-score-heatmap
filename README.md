@@ -4,9 +4,11 @@
 
 ## TODO
 
-Refactor the Matplotlib scripts into PyQt apps.
+-   [ ] Refactor the Matplotlib scripts into PyQt apps.
+-   [ ] Add running/examples to README.
 
 ## Meta
 
-Inspired by Jon Bois's video on the subject.
+Inspired by SB Nations's video on the subject.
 
+[Every NFL Score Ever | Chart Party](https://www.youtube.com/watch?v=9l5C8cGMueY)

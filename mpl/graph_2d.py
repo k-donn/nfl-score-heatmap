@@ -3,12 +3,12 @@
 usage: python3 graph.py
 """
 import matplotlib
+import matplotlib.cm as cm
+import matplotlib.colors as colors
 import matplotlib.pyplot as plt
 import numpy as np
 import requests
 from bs4 import BeautifulSoup
-from matplotlib import cm
-from matplotlib import colors
 from matplotlib.ticker import StrMethodFormatter
 
 
@@ -34,7 +34,6 @@ def heatmap(data, row_labels, col_labels, ax=None,
     **kwargs
         All other arguments are forwarded to `imshow`.
     """
-
     if not ax:
         ax = plt.gca()
 
@@ -98,7 +97,6 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
         All other arguments are forwarded to each call to `text` used to create
         the text labels.
     """
-
     if not isinstance(data, (list, np.ndarray)):
         data = im.get_array()
 
@@ -131,6 +129,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
 
 
 def main():
+    """Run all executable code."""
     fig = plt.figure(dpi=120, figsize=(9, 9))
 
     chart = fig.add_subplot(111)
@@ -156,21 +155,17 @@ def main():
     for score in scores:
         matrix[score["lose"]][score["win"]] = score["freq"]
 
-    x_ticks = list(range(75))
-    y_ticks = list(range(75))
+    x_ticks = np.arange(75)
+    y_ticks = np.arange(75)
 
-    curr_cmap = cm.get_cmap("Greens")
-    curr_cmap.set_bad(color="red")
-
-    for row_i, row_val in enumerate(matrix):
-        for col_i, col_v in enumerate(row_val):
-            if col_i < row_i:
-                matrix[row_i][col_i] = np.nan
+    curr_cmap = cm.get_cmap("Reds")
+    curr_cmap.set_bad(color="black")
 
     cbar_fmt = dict(format=StrMethodFormatter("{x:.0f}"))
 
     heatmap(matrix, x_ticks, y_ticks, ax=chart,
-            cmap=curr_cmap, cbarlabel="Score Freq", norm=colors.LogNorm(), cbar_kw=cbar_fmt)
+            cmap=curr_cmap, cbarlabel="Score Freq",
+            norm=colors.LogNorm(), cbar_kw=cbar_fmt)
 
     plt.tight_layout()
     plt.show()
