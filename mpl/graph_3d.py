@@ -81,6 +81,8 @@ def rotate_chart(chart: Axes3D):
 
 def main():
     """Run all executable code."""
+    setup_plt()
+
     fig = plt.figure(dpi=120, figsize=(16, 9))
 
     chart: Axes3D = fig.add_subplot(111, projection="3d")
