@@ -1,1 +1,6 @@
-*.png
+*
+!.gitignore
+!2d-mpl.png
+!3d-mpl.png
+!2d-pyqt.png
+!3d-pyqt.png

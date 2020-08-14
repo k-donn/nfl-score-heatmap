@@ -2,10 +2,38 @@
 
 Isometric/Perspective Heatmaps showing the frequency of NFL scores.
 
-## TODO
+## Usage
 
--   [ ] Refactor the Matplotlib scripts into PyQt apps.
--   [ ] Add running/examples to README.
+```bash
+Show a heatmap of all NFL scores.
+
+usage: python3.8 run.py [-h]
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+## Examples
+
+### 2D
+
+![2D example](./figures/2d-mpl.png)
+
+### 3D
+
+![3D example](./figures/3d-pyqt.png)
+
+## Running
+
+-   Create `conda` env from `environment.yml` (see [Install Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html))
+-   `requirements.txt` is just for GitHub dependency tracking
+-   From the root of the folder,
+
+```bash
+python3.8 ./run.py
+```
+
+## TODO
 
 ## Meta
 
