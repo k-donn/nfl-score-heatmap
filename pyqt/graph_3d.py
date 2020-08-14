@@ -17,10 +17,9 @@ from matplotlib.backends.backend_qt5agg import \
     NavigationToolbar2QT as NavigationToolbar
 from matplotlib.figure import Figure
 from mpl_toolkits.mplot3d import Axes3D
-from PyQt5.QtCore import QCoreApplication, QRect, pyqtSlot
-from PyQt5.QtGui import QIcon, QKeySequence
-from PyQt5.QtWidgets import (QAction, QDesktopWidget, QFileDialog, QMainWindow,
-                             QPushButton, QShortcut, QVBoxLayout, QWidget)
+from PyQt5.QtCore import QCoreApplication, pyqtSlot
+from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWidgets import QMainWindow, QShortcut, QVBoxLayout, QWidget
 
 
 class App(QMainWindow):
@@ -106,7 +105,10 @@ class Chart(FigureCanvas):
     setup_plt(self) -> None:
     format_plt(self) -> None:
     # formatting/init
-    fmt_chart(self) -> None:
+    format_chart(self) -> None:
+    # graphing
+    show_heatmap(self) -> None:
+    gen_ticks(int) -> List[int]
     ```
 
     Properties
@@ -137,7 +139,7 @@ class Chart(FigureCanvas):
 
         self.show_heatmap()
 
-        self.fmt_chart()
+        self.format_chart()
 
         self.format_plt()
 
@@ -227,7 +229,7 @@ class Chart(FigureCanvas):
                 res.append(bound)
         return res
 
-    def fmt_chart(self) -> None:
+    def format_chart(self) -> None:
         """Format the 3D Axes after rendering."""
         self.chart.set_title(self.title,
                              fontdict={"fontsize": 18, "family": "Poppins"})

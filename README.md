@@ -1,6 +1,6 @@
 # NFL Score Heatmap
 
-2/3d heatmaps showing the frequency of NFL scores.
+Isometric/Perspective Heatmaps showing the frequency of NFL scores.
 
 ## TODO
 

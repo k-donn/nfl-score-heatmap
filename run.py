@@ -11,7 +11,7 @@ import sys
 
 from PyQt5.QtWidgets import QApplication
 
-from pyqt import pyqt_graph_3d
+from pyqt import graph_3d
 
 
 def main():
@@ -22,7 +22,7 @@ def main():
 
     app = QApplication(sys.argv)
 
-    ex = pyqt_graph_3d.App()
+    ex = graph_3d.App()
 
     sys.exit(app.exec_())
 
