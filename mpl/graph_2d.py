@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from matplotlib.ticker import StrMethodFormatter
 
 
-def heatmap(data, row_labels, col_labels, ax=None,
+def heatmap(data, row_labels, col_labels, ax=None, ax_kw={},
             cbar_kw={}, cbarlabel="", **kwargs):
     """Create a heatmap from a numpy array and two lists of labels.
 
@@ -51,13 +51,15 @@ def heatmap(data, row_labels, col_labels, ax=None,
     ax.set_xticklabels(col_labels)
     ax.set_yticklabels(row_labels)
 
+    # batch Axes properties
+    ax.set(**ax_kw)
+
     # Let the horizontal axes labeling appear on top.
     ax.tick_params(top=True, bottom=False,
                    labeltop=True, labelbottom=False)
 
     # Rotate the tick labels and set their alignment.
-    plt.setp(ax.get_xticklabels(), rotation=-30, ha="right",
-             rotation_mode="anchor")
+    plt.setp(ax.get_xticklabels(), rotation=90, ha="right")
 
     # Turn spines off and create white grid.
     for edge, spine in ax.spines.items():
@@ -130,7 +132,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
 
 def main():
     """Run all executable code."""
-    fig = plt.figure(dpi=120, figsize=(9, 9))
+    fig = plt.figure(dpi=120, figsize=(12, 12))
 
     chart = fig.add_subplot(111)
 
@@ -162,13 +164,15 @@ def main():
     curr_cmap.set_bad(color="black")
 
     cbar_fmt = dict(format=StrMethodFormatter("{x:.0f}"))
+    ax_fmt = dict(xlabel="Win/Tie Score", ylabel="Lose/Tie Score")
 
     heatmap(matrix, x_ticks, y_ticks, ax=chart,
             cmap=curr_cmap, cbarlabel="Score Freq",
-            norm=colors.LogNorm(), cbar_kw=cbar_fmt)
+            norm=colors.LogNorm(), cbar_kw=cbar_fmt,
+            ax_kw=ax_fmt)
 
     plt.tight_layout()
-    plt.show()
+    plt.savefig("figures/2d-mpl.png")
 
 
 if __name__ == "__main__":
